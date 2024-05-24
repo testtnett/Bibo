@@ -5,6 +5,10 @@ from .serializers import UserSerializer, NoteSerializer
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from .models import Note
 
+class PublicNoteList(generics.ListAPIView):
+    queryset = Note.objects.all()
+    serializer_class = NoteSerializer
+    permission_classes = [AllowAny]
 
 class NoteListCreate(generics.ListCreateAPIView):
     serializer_class = NoteSerializer
