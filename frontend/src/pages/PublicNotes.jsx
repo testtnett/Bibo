@@ -22,16 +22,78 @@ function PublicNotes() {
             })
     };
 
+    // const convertTimestamp = (timestamp) => {
+    //     const date = new Date(timestamp * 1000);
+    //     return date.toLocaleString();
+    // };
+
+    const convertTimestampToDate = (timestamp) => {
+        const date = new Date(timestamp * 1000);
+        const dateString = date.toLocaleDateString("en-US", 
+            { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric'}
+        );
+        return dateString;
+    };
+    
+    const groupByDate = (notes) => {
+        return notes.reduce((groupedNotes, note) => {
+            const date = convertTimestampToDate(note.timestamp);
+            if (!groupedNotes[date]) {
+                groupedNotes[date] = [];
+            }
+            groupedNotes[date].push(note);
+            return groupedNotes;
+        }, {});
+    };
+    
+    const groupedNotes = groupByDate(notes);
+
+    // Sort the dates in descending order
+    const sortedDates = Object.entries(groupedNotes).sort(([dateA], [dateB]) => new Date(dateB) - new Date(dateA));
 
 
     return (
         <>
-            <h2>Public Notes</h2>
-            {notes.map((note) => (
-                <Note note={note} key={note.id} />
-            ))}
+        <div class="max-w 3-xl mx-auto bg-white p-6 rounded-lg shadow-md">
+        <div class="flex items-center justify-between mb-4">
+        <div class="container mx-auto mt-10 px-4 sm:px-0">
+        <div class="max-w 3-xl mx-auto bg-white p-6 rounded-lg shadow-md">
+        <h1 class="text-2xl font-semibold">Public Notes</h1>
+
+
+
+        {/* {Object.entries(groupedNotes).map(([date, notesForDate]) => (
+            <div key={date}>
+                <h2>{date}</h2>
+
+                {notesForDate.map((note) => (
+                    <Note note={note} key={note.id} />
+                ))}
+            </div>
+        ))} */}
+
+
+            {sortedDates.map(([date, notesForDate]) => {
+                // Sort notes for each date in reverse order
+                const sortedNotesForDate = notesForDate.sort((noteA, noteB) => noteB.timestamp - noteA.timestamp);
+                return (
+                    <div key={date}>
+                        <h2>{date}</h2>
+
+                        {sortedNotesForDate.map((note) => (
+                            <Note note={note} key={note.id} />
+                        ))}
+                    </div>
+                );
+            })}
+
+</div>
+</div>
+</div>
+</div>
         </>
     );
 }
+
 
 export default PublicNotes;

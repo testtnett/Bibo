@@ -1,6 +1,28 @@
 import { useState, useEffect } from "react";
 import api from "../api";
 
+import axios from 'axios';
+
+const api = axios.create({
+    baseURL: 'http://localhost:8000/api/',  // Ensure this base URL is correct
+});
+
+export const fetchNotes = async () => {
+    const response = await api.get('/notes/');
+    return response.data;
+};
+
+export const fetchPublicNotes = async () => {
+    const response = await api.get('/public-notes/');
+    return response.data;
+};
+
+export const createNote = async (noteData) => {
+    const response = await api.post('/notes/', noteData);
+    return response.data;
+};
+
+
 const useNotes = (apiEndpoint) => {
     const [notes, setNotes] = useState([]);
     const [filteredNotesByDate, setFilteredNotesByDate] = useState([]);
