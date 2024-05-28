@@ -4,8 +4,8 @@ import time
 
 
 class Note(models.Model):
-    title = models.CharField(max_length=100)
-    content = models.TextField(max_length=500)
+    title = models.CharField(max_length=80)
+    content = models.TextField(max_length=800)
     created_at = models.DateTimeField(auto_now_add=True)
     timestamp = models.IntegerField(default=int(time.time()))
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="notes")

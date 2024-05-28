@@ -9,6 +9,14 @@ class PublicNoteList(generics.ListAPIView):
     queryset = Note.objects.all()
     serializer_class = NoteSerializer
     permission_classes = [AllowAny]
+    
+class MyNoteList(generics.ListAPIView):
+    serializer_class = NoteSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        user = self.request.user
+        return Note.objects.filter(author=user)
 
 class NoteListCreate(generics.ListCreateAPIView):
     serializer_class = NoteSerializer
