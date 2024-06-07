@@ -8,6 +8,7 @@ import LoadingIndicator from "./LoadingIndicator";
 function Form({ route, method }) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [passwordConfirm, setPasswordConfirm] = useState('');
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
@@ -16,7 +17,13 @@ function Form({ route, method }) {
     const handleSubmit = async (e) => {
         setLoading(true);
         e.preventDefault();
-
+        
+        if (method === 'register' && password !== passwordConfirm) {
+            // Show an error message and return to prevent the form from being submitted
+            alert('Passwords do not match');
+            return;
+        }
+    
         try {
             const res = await api.post(route, { username, password })
             if (method === "login") {
@@ -59,6 +66,21 @@ function Form({ route, method }) {
             placeholder="Password"
             class="w-full p-2 border rounded"
         />
+
+        
+        {method === 'register' && (
+        <div>
+            <label for="passwordConfirm" class="block mb-1 font-medium">Confirm Password</label>
+            <input
+                type="password"
+                value={passwordConfirm}
+                onChange={(e) => setPasswordConfirm(e.target.value)}
+                placeholder="Confirm Password"
+                class="w-full p-2 border rounded"
+            />
+        </div>
+        )}
+        
         {loading && <LoadingIndicator />}
         <button class="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700" type="submit">
             {name}

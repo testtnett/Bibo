@@ -89,7 +89,7 @@ function Home() {
             <div class="text-center">
                 <br/>
                 <br/>
-                <h2 class="text-2xl font-semibold mb-4">Edge Esmeralda Diary</h2>
+                <h2 class="text-2xl font-semibold mb-4">Kiez Diary</h2>
                 {/* <p class="text-gray-700">
                     (This is a simple AI blog generator that uses OpenAI's GPT-3 to generate blog posts. 
                     To get started, click the button below to generate a blog post.)

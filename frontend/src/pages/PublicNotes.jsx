@@ -54,11 +54,15 @@ function PublicNotes() {
 
     return (
         <>
+                <div class="flex flex-col min-h-screen bg-gray-100 font-sans antialised">
+                <div class="container mx-auto mt-10 px-4 sm:px-0">
+
+
         <div class="max-w 3-xl mx-auto bg-white p-6 rounded-lg shadow-md">
         <div class="flex items-center justify-between mb-4">
         <div class="container mx-auto mt-10 px-4 sm:px-0">
         <div class="max-w 3-xl mx-auto bg-white p-6 rounded-lg shadow-md">
-        <h1 class="text-2xl font-semibold">Public Notes</h1>
+        <h1 class="text-2xl font-semibold mb-8 text-center">Public Notes</h1>
 
 
 
@@ -78,18 +82,20 @@ function PublicNotes() {
                 const sortedNotesForDate = notesForDate.sort((noteA, noteB) => noteB.timestamp - noteA.timestamp);
                 return (
                     <div key={date}>
-                        <h2>{date}</h2>
+                        <h2 class="text-center my-12">{date}</h2>
 
                         {sortedNotesForDate.map((note) => (
-                            <Note note={note} key={note.id} />
+                            <Note  note={note} key={note.id} />
                         ))}
                     </div>
                 );
             })}
+</div>
+</div>
+</div>
+</div>
+</div>
 
-</div>
-</div>
-</div>
 </div>
         </>
     );

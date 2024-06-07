@@ -32,12 +32,11 @@ function Note({ note }) {
         <>
         <section>
 
-            <div class="space-y-4">
+            <div class="my-4">
                 
-            <div class="border border-gray-300 p-4 rounded-lg">
-                <p className="note-date"> {time}</p>
-                <h3 class="text-lg font-semibold">{note.title}</h3>
-                <p>{note.content}</p>
+            <div class="border border-grey-100 p-2 rounded-lg">
+                <p className="mb-1 note-date">{time}  {note.title}</p>
+                <p class="text-center">{note.content}</p>
              </div>
             </div>
             </section>
