@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 function Navbar() {
     return (
 
-        <nav className="flex items-center justify-between flex-wrap bg-blue-500 p-6">
+        <nav className="flex items-center justify-between flex-wrap bg-gray-300 p-6">
             <div className="flex items-center flex-shrink-0 text-white mr-6">
                 <span className="font-semibold text-xl tracking-tight">Notes App</span>
             </div>
@@ -18,17 +18,25 @@ function Navbar() {
             <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
                 <div className="text-sm lg:flex-grow">
                     <Link to="/" className="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4">
-                        Home
+                        Shared 
                     </Link>
-                    <Link to="/notes" className="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4">
+                    <Link to="/login" className="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4">
+                        Login 
+                    </Link>
+                    <Link to="/my-notes" className="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4">
                         My Notes
                     </Link>
-                    <Link to="/public-notes" className="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4">
-                        Public Notes
+                    <Link to="/home" className="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white">
+                        Create
                     </Link>
-                    <Link to="/about" className="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white">
-                        About
+                    <Link to="/register" className="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white">
+                        Register
                     </Link>
+
+                    <Link to="/logout" className="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white">
+                        Logout
+                    </Link>
+
                 </div>
             </div>
         </nav>

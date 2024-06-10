@@ -23,42 +23,79 @@ function MyNotes() {
     };
 
 
-    const groupByDate = (notes) => {
-        const grouped = {};
-        notes.forEach((note) => {
-            const date = new Date(note.timestamp * 1000).toLocaleDateString("en-US");
-            if (!grouped[date]) grouped[date] = [];
-            grouped[date].push(note);
-        });
-        return grouped;
-    }
-
-    const groupByTime = (notes) => {    
-        const grouped = {};
-        notes.forEach((note) => {
-            const time = new Date(note.timestamp * 1000).toLocaleTimeString("en-US", { hour: '2-digit', minute: '2-digit', hour12: false});
-            if (!grouped[time]) grouped[time] = [];
-            grouped[time].push(note);
-        });
-        return grouped;
-    }
-
-    const groupedNotes = groupByDate(notes);
-    console.log(groupedNotes);
-    const groupedTime = groupByTime(notes);
-    console.log(groupedTime);
+    const convertTimestampToDate = (timestamp) => {
+        const date = new Date(timestamp * 1000);
+        const dateString = date.toLocaleDateString("en-US", 
+            { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric'}
+        );
+        return dateString;
+    };
     
+    const groupByDate = (notes) => {
+        return notes.reduce((groupedNotes, note) => {
+            const date = convertTimestampToDate(note.timestamp);
+            if (!groupedNotes[date]) {
+                groupedNotes[date] = [];
+            }
+            groupedNotes[date].push(note);
+            return groupedNotes;
+        }, {});
+    };
+    
+    const groupedNotes = groupByDate(notes);
+
+    // Sort the dates in descending order
+    const sortedDates = Object.entries(groupedNotes).sort(([dateA], [dateB]) => new Date(dateB) - new Date(dateA));
+
 
     return (
-        <div>
-            <div>
-                <h2>Notes</h2>
-                {notes.map((note) => (
+        <>
+                <div class="flex flex-col min-h-screen bg-gray-100 font-sans antialised">
+                <div class="container mx-auto mt-10 px-4 sm:px-0">
+
+
+        <div class="max-w 3-xl mx-auto bg-white p-6 rounded-lg shadow-md">
+        <div class="flex items-center justify-between mb-4">
+        <div class="container mx-auto mt-10 px-4 sm:px-0">
+        <div class="max-w 3-xl mx-auto bg-white p-6 rounded-lg shadow-md">
+        <h1 class="text-2xl font-semibold mb-8 text-center">Public Notes</h1>
+
+
+
+        {/* {Object.entries(groupedNotes).map(([date, notesForDate]) => (
+            <div key={date}>
+                <h2>{date}</h2>
+
+                {notesForDate.map((note) => (
                     <Note note={note} key={note.id} />
                 ))}
             </div>
-        </div>
+        ))} */}
+
+
+            {sortedDates.map(([date, notesForDate]) => {
+                // Sort notes for each date in reverse order
+                const sortedNotesForDate = notesForDate.sort((noteA, noteB) => noteB.timestamp - noteA.timestamp);
+                return (
+                    <div key={date}>
+                        <h2 class="text-center my-12">{date}</h2>
+
+                        {sortedNotesForDate.map((note) => (
+                            <Note  note={note} key={note.id} />
+                        ))}
+                    </div>
+                );
+            })}
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+        </>
     );
 }
+
 
 export default MyNotes;

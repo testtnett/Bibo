@@ -32,14 +32,13 @@ function Note({ note }) {
         <>
         <section>
 
-            <div class="my-4">
-                
-            <div class="border border-grey-100 p-2 rounded-lg">
-                <p className="mb-1 note-date">{time}  {note.title}</p>
-                <p class="text-center">{note.content}</p>
-             </div>
-            </div>
-            </section>
+        <div className="my-4 transition-transform transform hover:scale-105">
+  <div>
+    <p className="text-center border-b border-gray-400 pb-2">{note.content}</p>
+    <p className="mb-1 note-date">{time}  {note.title}</p>
+  </div>
+</div>           
+ </section>
         </>
 
 // {/* <div class="container mx-auto mt-10 px-4 sm:px-0">
