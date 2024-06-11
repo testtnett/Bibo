@@ -66,8 +66,6 @@ function Form({ route, method }) {
             placeholder="Password"
             class="w-full p-2 border rounded"
         />
-
-        
         {method === 'register' && (
         <div>
             <label for="passwordConfirm" class="block mb-1 font-medium">Confirm Password</label>
@@ -80,7 +78,6 @@ function Form({ route, method }) {
             />
         </div>
         )}
-        
         {loading && <LoadingIndicator />}
         <button class="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700" type="submit">
             {name}
@@ -88,32 +85,7 @@ function Form({ route, method }) {
         </form>
         </div>
         </div>
-
         </>
-       
-
-
-        // <form onSubmit={handleSubmit} className="form-container">
-        //     <h1>{name}</h1>
-        //     <input
-        //         className="form-input"
-        //         type="text"
-        //         value={username}
-        //         onChange={(e) => setUsername(e.target.value)}
-        //         placeholder="Username"
-        //     />
-        //     <input
-        //         className="form-input"
-        //         type="password"
-        //         value={password}
-        //         onChange={(e) => setPassword(e.target.value)}
-        //         placeholder="Password"
-        //     />
-        //     {loading && <LoadingIndicator />}
-        //     <button className="form-button" type="submit">
-        //         {name}
-        //     </button>
-        // </form>
     );
 }
 

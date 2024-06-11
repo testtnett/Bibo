@@ -8,7 +8,6 @@ function Home() {
     const [title, setTitle] = useState("");
     const [charCount, setCharCount] = useState(0);
 
-
     const createNote = (e) => {
         e.preventDefault();
         api
@@ -66,7 +65,6 @@ function Home() {
         </div>
         </div>
         </>
-    );
-}
+        ); }
 
 export default Home;

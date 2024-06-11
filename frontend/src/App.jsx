@@ -1,6 +1,6 @@
 
 import react from "react"
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Login from "./pages/Login"
 import Register from "./pages/Register"
 import NotFound from "./pages/NotFound"
@@ -9,12 +9,12 @@ import PublicNotes from "./pages/PublicNotes"
 import MyNotes from "./pages/MyNotes"
 import SharedLayout from "./pages/SharedLayout"
 import Home from "./pages/Home"
+import Logout from "./pages/Logout"
 
-
-function Logout() {
-  localStorage.clear()
-  return <Navigate to="/login" />
-}
+// function Logout() {
+//   localStorage.clear()
+//   return <Navigate to="/login" />
+// }
 
 function RegisterAndLogout() {
   localStorage.clear()
@@ -36,13 +36,21 @@ function App() {
             }
           />
           <Route path="login" element={<Login />} />
-          <Route path="logout" element={<Logout />} />
+          <Route path="logout" element={<Logout  />} />
           <Route path="register" element={<RegisterAndLogout />} />
           <Route
             path="my-notes"
             element={
             <ProtectedRoute>
               <MyNotes />
+            </ProtectedRoute>
+           } />
+
+          <Route
+            path="logout"
+            element={
+            <ProtectedRoute>
+              <Logout />
             </ProtectedRoute>
            } />
           <Route path="*" element={<NotFound />} />
