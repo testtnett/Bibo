@@ -1,8 +1,15 @@
 ## devcontainer  
 
 ### branches ?  
-  so not cloned how to choose branch on start ?  
+  so not cloned  
+  how to choose branch on start ?  
 
 ### docker ?  
 
-### start commands :
+## ToDo
+readme  
+install commands   
+
+### start commands ? :
+Backend:  
+Frontend:  
