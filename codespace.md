@@ -10,10 +10,12 @@
 readme  
 install commands   
 
-### start commands ? :
+### start commands:
 #### dev
+
 Backend:  
-cd  backend ; python manage.py runserver  
+python backend/manage.py runserver  
+
 Frontend:  
-cd frontend ; npm run dev  
+cd frontend && npm run dev  
 
