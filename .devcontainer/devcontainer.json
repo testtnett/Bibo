@@ -12,7 +12,8 @@
 		"ghcr.io/warrenbuckley/codespace-features/sqlite:1": {}
 	},
 	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "pip install --user -r requirements.txt",
+	"postCreateCommand": "pip install --user -r requirements.txt && cd frontend ; npm i",
 	// "postCreateCommand": "cd frontend ; npm i"
-	"postCreateCommand": "./.devcontainer/postCreateCommand.sh"
+	// Permission denied, chown ! how on start ?
+	// "postCreateCommand": "./.devcontainer/postCreateCommand.sh"
 }
