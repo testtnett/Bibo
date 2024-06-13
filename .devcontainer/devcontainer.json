@@ -5,12 +5,13 @@
 			"extensions": [
 				"ms-azuretools.vscode-docker",
 				"ms-python.python",
-				"eamodio.gitlens"
+				"eamodio.gitlens",
+				"qwtel.sqlite-viewer"
 			]
 		}
 	},
 	"features": {
-		"ghcr.io/warrenbuckley/codespace-features/sqlite:1": {}
+		// "ghcr.io/warrenbuckley/codespace-features/sqlite:1": {}
 	},
 	// Use 'postCreateCommand' to run commands after the container is created.
 	// "postCreateCommand": "pip install --user -r backend/requirements.txt && cd frontend && npm i"
