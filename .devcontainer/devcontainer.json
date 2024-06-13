@@ -15,5 +15,6 @@
 	// "postCreateCommand": "pip install --user -r backend/requirements.txt && cd frontend && npm i"
 	// "postCreateCommand": "cd frontend ; npm i"
 	// Permission denied, chown ! ?
-	"postCreateCommand": "chmod +x .devcontainer/postCreateCommand.sh && ./.devcontainer/postCreateCommand.sh"
+	// "postCreateCommand": "chmod +x .devcontainer/postCreateCommand.sh && ./.devcontainer/postCreateCommand.sh"
+	"postCreateCommand": "./.devcontainer/postCreateCommand.sh"
 }
